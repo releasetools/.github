@@ -1,22 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Baseline for release.tools repos. Extends the shared MihaiBojin/renovate baseline and layers on what differs here: pinned action digests, lock file maintenance, and a weekly roll-up of Actions bumps.",
   "extends": [
-    "config:recommended",
-    "security:minimumReleaseAgeNpm",
+    "github>MihaiBojin/renovate",
     "helpers:pinGitHubActionDigests"
   ],
-  "minimumReleaseAge": "3 days",
-  "internalChecksFilter": "strict",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 5am on monday"]
   },
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": ["security"]
-  },
-  "osvVulnerabilityAlerts": true,
-  "dependencyDashboardOSVVulnerabilitySummary": "unresolved",
   "packageRules": [
     {
       "description": "Roll up routine GitHub Actions bumps into a single weekly PR (security PRs are unaffected)",
@@ -31,24 +23,6 @@
       "minimumReleaseAge": null,
       "prBodyNotes": [
         "⚠️ Renovate's lockFileMaintenance does not validate Minimum Release Age — the package manager performs the version resolution. Review fresh transitive updates manually."
-      ]
-    },
-    {
-      "description": "Minimum Release Age cannot be enforced for package replacements on non-npm ecosystems",
-      "matchDatasources": ["!npm"],
-      "matchUpdateTypes": ["replacement"],
-      "minimumReleaseAge": null,
-      "prBodyNotes": [
-        "⚠️ Renovate's replacement flow does not currently wire in release-age metadata (renovatebot/renovate#39400). Manually validate the Minimum Release Age for the replacement package."
-      ]
-    },
-    {
-      "description": "Minimum Release Age cannot be enforced for pin updates on non-npm ecosystems",
-      "matchDatasources": ["!npm"],
-      "matchUpdateTypes": ["pin"],
-      "minimumReleaseAge": null,
-      "prBodyNotes": [
-        "⚠️ Renovate's pin flow does not currently wire in release-age metadata (renovatebot/renovate#40288). Manually validate the Minimum Release Age for the pinned version."
       ]
     }
   ]
