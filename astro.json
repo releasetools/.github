@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Re-export of the shared astro profile, so repos here keep referencing their own org preset while the rule itself lives in one place.",
+  "extends": ["github>MihaiBojin/renovate:astro"]
+}
