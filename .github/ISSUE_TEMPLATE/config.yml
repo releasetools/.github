@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A question rather than a bug
+    url: https://github.com/releasetools/.github/blob/main/SUPPORT.md
+    about: Where questions go, and what the issue tracker is for.
+  - name: Report a vulnerability
+    url: https://github.com/releasetools/.github/blob/main/SECURITY.md
+    about: Use private reporting on the Advisories tab, never a public issue.
